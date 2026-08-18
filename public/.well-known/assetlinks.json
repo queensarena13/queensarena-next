@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.queensarena",
+      "sha256_cert_fingerprints": [
+        "8B:6B:D8:8E:E6:2D:3D:6C:AC:29:F9:6F:38:6E:33:93:0A:DB:12:A3:B7:A8:E9:0E:FA:4D:F6:FA:B3:4F:98:57"
+      ]
+    }
+  }
+]

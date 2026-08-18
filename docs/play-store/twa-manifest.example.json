@@ -1,0 +1,27 @@
+{
+  "packageId": "com.queensarena",
+  "host": "queensarena-next.vercel.app",
+  "name": "QueensArena",
+  "launcherName": "QueensArena",
+  "display": "standalone",
+  "themeColor": "#f6b80f",
+  "themeColorDark": "#05080a",
+  "navigationColor": "#05080a",
+  "navigationColorDark": "#05080a",
+  "navigationDividerColor": "#05080a",
+  "navigationDividerColorDark": "#05080a",
+  "backgroundColor": "#05080a",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://queensarena-next.vercel.app/queen-logo.png",
+  "maskableIconUrl": "https://queensarena-next.vercel.app/queen-logo.png",
+  "splashScreenFadeOutDuration": 300,
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "signingKey": {
+    "path": "./android/queensarena-release.keystore",
+    "alias": "queensarena"
+  },
+  "appVersion": "1.0.0",
+  "fallbackType": "customtabs"
+}

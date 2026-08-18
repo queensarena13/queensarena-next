@@ -1,0 +1,28 @@
+{
+  "crons": [
+    {
+      "path": "/api/sync",
+      "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/api/sync/matches",
+      "schedule": "10 5 * * *"
+    },
+    {
+      "path": "/api/sync/api/worker",
+      "schedule": "20 5 * * *"
+    },
+    {
+      "path": "/api/standings-sync",
+      "schedule": "30 5 * * *"
+    },
+    {
+      "path": "/api/sync/catalog",
+      "schedule": "45 5 * * *"
+    },
+    {
+      "path": "/api/cleanup",
+      "schedule": "0 4 * * *"
+    }
+  ]
+}

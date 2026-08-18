@@ -20,6 +20,15 @@
 # production
 /build
 
+# local Android build tooling
+/android-tools/
+/android/.gradle/
+/android/**/build/
+/android/local.properties
+/android/*.keystore
+/android/*.jks
+/android/keystore-passwords.txt
+
 # misc
 .DS_Store
 *.pem
@@ -39,3 +48,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel

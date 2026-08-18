@@ -1,0 +1,34 @@
+{
+  "id": "/",
+  "name": "QueensArena",
+  "short_name": "QueensArena",
+  "description": "Resultados, calendário, classificações, equipas e jogadoras de desporto feminino.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#05080a",
+  "theme_color": "#f6b80f",
+  "categories": [
+    "sports",
+    "news"
+  ],
+  "lang": "pt-PT",
+  "icons": [
+    {
+      "src": "/queen-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/queen-splash-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "QueensArena"
+    }
+  ]
+}

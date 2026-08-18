@@ -1,0 +1,43 @@
+{
+  "packageId": "com.queensarena",
+  "host": "queensarena-next.vercel.app",
+  "name": "QueensArena",
+  "launcherName": "QueensArena",
+  "display": "standalone",
+  "themeColor": "#F6B80F",
+  "themeColorDark": "#05080A",
+  "navigationColor": "#05080A",
+  "navigationColorDark": "#05080A",
+  "navigationDividerColor": "#05080A",
+  "navigationDividerColorDark": "#05080A",
+  "backgroundColor": "#05080A",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://queensarena-next.vercel.app/queen-logo.png",
+  "maskableIconUrl": "https://queensarena-next.vercel.app/queen-logo.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./queensarena-release.keystore",
+    "alias": "queensarena"
+  },
+  "appVersionName": "1.0.2",
+  "appVersionCode": 3,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://queensarena-next.vercel.app/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "displayOverride": [],
+  "appVersion": "1.0.2"
+}
