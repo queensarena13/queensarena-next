@@ -17,6 +17,7 @@ import {
 } from "lucide-react"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { MobileMenu } from "@/components/mobile-menu"
+import { NotificationsPanel } from "@/components/notifications-panel"
 import { useLanguage } from "@/components/language-provider"
 import { SearchBar } from "@/components/search-bar"
 
@@ -124,6 +125,7 @@ export function Topbar() {
               <Search className="h-5 w-5" />
             )}
           </button>
+          <NotificationsPanel />
           <LanguageSwitcher />
           <Link
             href="/profile"

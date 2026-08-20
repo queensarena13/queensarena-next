@@ -47,13 +47,35 @@ export async function subscribeToPush() {
         urlBase64ToUint8Array(vapidPublicKey),
     }))
 
-  await fetch("/api/push/subscribe", {
+  const { createClient } = await import("@supabase/supabase-js")
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  const sessionClient =
+    supabaseUrl && supabaseAnonKey
+      ? createClient(supabaseUrl, supabaseAnonKey, {
+          auth: {
+            persistSession: false,
+            autoRefreshToken: false,
+          },
+        })
+      : null
+  const { data: { session } } = sessionClient
+    ? await sessionClient.auth.getSession()
+    : { data: { session: null } }
+
+  const response = await fetch("/api/push/subscribe", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...(session?.access_token
+        ? { Authorization: `Bearer ${session.access_token}` }
+        : {}),
     },
     body: JSON.stringify(subscription),
   })
+
+  if (!response.ok) return false
 
   return true
 }

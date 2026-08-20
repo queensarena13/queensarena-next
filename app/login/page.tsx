@@ -8,9 +8,16 @@ import { supabaseClient } from "@/lib/supabase-client"
 import { useLanguage } from "@/components/language-provider"
 import { syncFavoritesFromAccount } from "@/lib/synced-favorites"
 
-const publicSiteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://queensarena-next.vercel.app"
+function getPublicSiteUrl() {
+  if (typeof window !== "undefined") {
+    return window.location.origin
+  }
+
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://queensarena-next.vercel.app"
+  )
+}
 
 const copy = {
   accountActive:
@@ -294,7 +301,7 @@ export default function LoginPage() {
           email: cleanEmail,
           password,
           options: {
-            emailRedirectTo: `${publicSiteUrl}/login`,
+            emailRedirectTo: `${getPublicSiteUrl()}/login`,
           },
         })
 
@@ -341,7 +348,7 @@ export default function LoginPage() {
         await supabaseClient.auth.resetPasswordForEmail(
           email.trim(),
           {
-            redirectTo: `${publicSiteUrl}/login`,
+            redirectTo: `${getPublicSiteUrl()}/login`,
           }
         )
 
@@ -380,7 +387,7 @@ export default function LoginPage() {
           type: "signup",
           email: email.trim(),
           options: {
-            emailRedirectTo: `${publicSiteUrl}/login`,
+            emailRedirectTo: `${getPublicSiteUrl()}/login`,
           },
         })
 
