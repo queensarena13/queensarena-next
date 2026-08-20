@@ -40,6 +40,10 @@ const copy = {
     "Palavra-passe atualizada. J\u00e1 podes usar a tua conta.",
   signInFailed:
     "N\u00e3o foi poss\u00edvel iniciar sess\u00e3o neste momento.",
+  invalidCredentials:
+    "O email ou a palavra-passe est\u00e3o incorretos. Se ainda n\u00e3o tens conta, escolhe Criar conta.",
+  invalidSignupEmail:
+    "Este endere\u00e7o de email n\u00e3o parece v\u00e1lido. Confirma a escrita e tenta novamente.",
   signupFailed:
     "N\u00e3o foi poss\u00edvel criar conta neste momento.",
   resetFailed:
@@ -77,22 +81,34 @@ async function recordSignupEmail(
   }
 }
 
-function friendlyAuthError(message: string) {
+function friendlyAuthError(
+  message: string,
+  context: "login" | "signup" | "generic" = "generic"
+) {
   const normalized = message.toLowerCase()
+
+  if (
+    normalized.includes("already") ||
+    normalized.includes("registered") ||
+    normalized.includes("exists")
+  ) {
+    return "Esta conta j\u00e1 existe. Entra com a tua palavra-passe ou usa a recupera\u00e7\u00e3o."
+  }
+
+  if (
+    context === "login" &&
+    (normalized.includes("invalid login credentials") ||
+      normalized.includes("invalid credentials"))
+  ) {
+    return copy.invalidCredentials
+  }
 
   if (normalized.includes("rate limit")) {
     return "O limite tempor\u00e1rio de emails foi atingido. Aguarda alguns minutos antes de pedir novo email de confirma\u00e7\u00e3o."
   }
 
-  if (normalized.includes("invalid")) {
-    return "N\u00e3o foi poss\u00edvel validar este email. Usa um email real e confirma se est\u00e1 escrito corretamente."
-  }
-
-  if (
-    normalized.includes("already") ||
-    normalized.includes("registered")
-  ) {
-    return "Esta conta j\u00e1 existe. Usa o bot\u00e3o Entrar."
+  if (context === "signup" && normalized.includes("invalid")) {
+    return copy.invalidSignupEmail
   }
 
   if (normalized.includes("email not confirmed")) {
@@ -261,7 +277,7 @@ export default function LoginPage() {
 
       if (error) {
         setErrorMessage(
-          friendlyAuthError(error.message)
+          friendlyAuthError(error.message, "login")
         )
         return
       }
@@ -274,7 +290,7 @@ export default function LoginPage() {
     } catch (error) {
       setErrorMessage(
         error instanceof Error
-          ? friendlyAuthError(error.message)
+          ? friendlyAuthError(error.message, "login")
           : copy.signInFailed
       )
     } finally {
@@ -307,7 +323,7 @@ export default function LoginPage() {
 
       if (error) {
         setErrorMessage(
-          friendlyAuthError(error.message)
+          friendlyAuthError(error.message, "signup")
         )
         return
       }
@@ -325,7 +341,7 @@ export default function LoginPage() {
     } catch (error) {
       setErrorMessage(
         error instanceof Error
-          ? friendlyAuthError(error.message)
+          ? friendlyAuthError(error.message, "signup")
           : copy.signupFailed
       )
     } finally {
@@ -402,7 +418,7 @@ export default function LoginPage() {
     } catch (error) {
       setErrorMessage(
         error instanceof Error
-          ? friendlyAuthError(error.message)
+          ? friendlyAuthError(error.message, "signup")
           : copy.signupFailed
       )
     } finally {
