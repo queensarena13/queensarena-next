@@ -197,24 +197,42 @@ function filterByView(
   matches: ExternalMatch[],
   view?: string | null
 ) {
+  const now = Date.now()
+  const recentCutoff = now - 120 * 24 * 60 * 60 * 1000
+  const upcomingGrace = now - 6 * 60 * 60 * 1000
+
   if (view === "live") {
-    return matches.filter((match) =>
-      ["LIVE", "HALFTIME"].includes(
-        match.status
+    return matches.filter((match) => {
+      const startsAt = new Date(match.starts_at).getTime()
+      return (
+        ["LIVE", "HALFTIME"].includes(match.status) &&
+        Number.isFinite(startsAt) &&
+        startsAt >= upcomingGrace
       )
-    )
+    })
   }
 
   if (view === "recent") {
-    return matches.filter(
-      (match) => match.status === "FINISHED"
-    )
+    return matches.filter((match) => {
+      const startsAt = new Date(match.starts_at).getTime()
+      return (
+        match.status === "FINISHED" &&
+        Number.isFinite(startsAt) &&
+        startsAt >= recentCutoff &&
+        startsAt <= now
+      )
+    })
   }
 
   if (view === "upcoming") {
-    return matches.filter(
-      (match) => match.status === "SCHEDULED"
-    )
+    return matches.filter((match) => {
+      const startsAt = new Date(match.starts_at).getTime()
+      return (
+        match.status === "SCHEDULED" &&
+        Number.isFinite(startsAt) &&
+        startsAt >= upcomingGrace
+      )
+    })
   }
 
   return matches
