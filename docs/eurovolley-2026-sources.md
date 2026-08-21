@@ -27,3 +27,7 @@ A página oficial da CEV liga o EuroVolley feminino à competição antiga com o
 A agenda oficial do EuroVolleyTV apresenta, para hoje, os seguintes jogos da fase de grupos feminina: França–Eslováquia, Áustria–Sérvia, Croácia–Itália, Bulgária–Ucrânia, Azerbaijão–Portugal, Türkiye–Letónia, Suécia–Montenegro e Czechia–Grécia. A agenda também apresentava, para o dia seguinte, Bélgica–Espanha e Alemanha–Eslovénia; esses jogos ficam documentados como fonte para a próxima carga feminina. A fonte é https://www.eurovolley.tv/pages/m_CJ1HXzt.
 
 Os horários relativos da página foram convertidos para UTC com base no horário oficial CEV apresentado no calendário de competição. Os resultados devem ser atualizados após os jogos, sem substituir a fonte oficial.
+
+## Próxima jornada feminina
+
+A agenda oficial EuroVolleyTV e referências de calendário confirmam para 22 de agosto os jogos femininos Bélgica–Espanha e Alemanha–Eslovénia. A página oficial de agenda é https://www.eurovolley.tv/pages/m_CJ1HXzt. A referência de jogo Bélgica–Espanha também aparece no canal oficial CEV: https://www.youtube.com/watch?v=2AoeHaTWBCc. A referência de Alemanha–Eslovénia indica 16:00 de hora local em Istambul: https://www.koobit.com/womens-european-volleyball-championship-s20339/germany-vs-slovenia-e111003. Os horários devem ser reconciliados com a agenda CEV antes de inserir a jornada seguinte.
