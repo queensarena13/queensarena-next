@@ -3,11 +3,10 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
-  BarChart3,
   CalendarDays,
   Home,
-  LogIn,
   Shield,
+  Trophy,
   UserRound,
 } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
@@ -28,30 +27,28 @@ export function BottomNav() {
       icon: CalendarDays,
     },
     {
+      href: "/leagues",
+      label: dictionary.nav.leagues,
+      icon: Trophy,
+    },
+    {
       href: "/teams",
       label: dictionary.nav.teams,
       icon: Shield,
     },
     {
-      href: "/stats",
-      label: dictionary.nav.stats,
-      icon: BarChart3,
-    },
-    {
-      href: "/players",
-      label: dictionary.nav.players,
-      icon: UserRound,
-    },
-    {
-      href: "/login",
+      href: "/profile",
       label: dictionary.common.profile,
-      icon: LogIn,
+      icon: UserRound,
     },
   ]
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-[10000] border-t border-white/[0.08] bg-[#05080a] px-2 pb-[calc(env(safe-area-inset-bottom)+8px)] pt-2 lg:hidden">
-      <div className="mx-auto grid max-w-md grid-cols-6 gap-1">
+    <nav
+      aria-label="Navegação principal"
+      className="fixed inset-x-0 bottom-0 z-[10000] border-t border-white/[0.08] bg-[#05080a]/95 px-2 pb-[calc(env(safe-area-inset-bottom)+8px)] pt-2 shadow-[0_-12px_32px_rgba(0,0,0,0.22)] backdrop-blur-xl lg:hidden"
+    >
+      <div className="mx-auto grid max-w-md grid-cols-5 gap-1">
         {items.map((item) => {
           const Icon = item.icon
           const active =
@@ -63,13 +60,14 @@ export function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex h-14 min-w-0 flex-col items-center justify-center rounded-lg px-1 text-[10px] font-bold transition ${
+              aria-current={active ? "page" : undefined}
+              className={`relative flex min-h-14 min-w-0 flex-col items-center justify-center rounded-xl px-1 text-[10px] font-bold transition-all duration-200 active:scale-95 ${
                 active
-                  ? "bg-yellow-400 text-black"
+                  ? "bg-yellow-400 text-black shadow-[0_6px_18px_rgba(250,204,21,0.18)]"
                   : "text-zinc-400 hover:bg-white/[0.05] hover:text-white"
               }`}
             >
-              <Icon className="mb-1 h-4 w-4" />
+              <Icon className="mb-1 h-[18px] w-[18px]" />
               <span className="max-w-full truncate">
                 {item.label}
               </span>
