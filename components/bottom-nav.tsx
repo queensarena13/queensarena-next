@@ -46,7 +46,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label="Navegação principal"
-      className="fixed inset-x-0 bottom-0 z-[10000] border-t border-white/[0.08] bg-[#05080a]/95 px-2 pb-[calc(env(safe-area-inset-bottom)+8px)] pt-2 shadow-[0_-12px_32px_rgba(0,0,0,0.22)] backdrop-blur-xl lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-[10000] border-t border-white/[0.1] bg-[#05080a]/90 px-2 pb-[calc(env(safe-area-inset-bottom)+8px)] pt-2 shadow-[0_-18px_40px_rgba(0,0,0,0.28)] backdrop-blur-2xl lg:hidden"
     >
       <div className="mx-auto grid max-w-md grid-cols-5 gap-1">
         {items.map((item) => {
@@ -61,10 +61,10 @@ export function BottomNav() {
               key={item.href}
               href={item.href}
               aria-current={active ? "page" : undefined}
-              className={`relative flex min-h-14 min-w-0 flex-col items-center justify-center rounded-xl px-1 text-[10px] font-bold transition-all duration-200 active:scale-95 ${
+              className={`relative flex min-h-14 min-w-0 flex-col items-center justify-center rounded-2xl px-1 text-[10px] font-bold tracking-tight transition-all duration-200 active:scale-95 ${
                 active
-                  ? "bg-yellow-400 text-black shadow-[0_6px_18px_rgba(250,204,21,0.18)]"
-                  : "text-zinc-400 hover:bg-white/[0.05] hover:text-white"
+                  ? "bg-yellow-400 text-black shadow-[0_8px_20px_rgba(250,204,21,0.2)]"
+                  : "text-zinc-400 hover:bg-white/[0.06] hover:text-white"
               }`}
             >
               <Icon className="mb-1 h-[18px] w-[18px]" />

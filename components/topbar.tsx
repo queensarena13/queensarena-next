@@ -62,14 +62,14 @@ export function Topbar() {
   ]
 
   return (
-    <header className="sticky top-0 z-[9000] border-b border-white/[0.08] bg-[#05080a]/95 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-[9000] border-b border-white/[0.08] bg-[#05080a]/90 shadow-[0_8px_30px_rgba(0,0,0,0.16)] backdrop-blur-2xl">
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-3 sm:h-[4.5rem] sm:gap-4 sm:px-6 lg:px-8">
         <Link
           href="/"
           aria-label="QueensArena"
           className="flex min-w-0 shrink-0 items-center gap-3"
         >
-          <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg border border-white/[0.08] bg-black">
+          <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl border border-yellow-400/20 bg-black shadow-[0_0_22px_rgba(246,184,15,0.12)] sm:h-11 sm:w-11">
             <Image
               src="/queen-logo.png"
               alt=""
@@ -79,7 +79,7 @@ export function Topbar() {
               priority
             />
           </span>
-          <span className="hidden whitespace-nowrap text-2xl font-black leading-none text-white sm:block">
+          <span className="hidden whitespace-nowrap text-xl font-black leading-none tracking-[-0.04em] text-white sm:block sm:text-2xl">
             Queens
             <span className="text-yellow-400">
               Arena
@@ -99,7 +99,7 @@ export function Topbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`inline-flex h-11 items-center gap-2 rounded-lg px-4 text-sm font-black transition ${
+                className={`inline-flex h-10 items-center gap-2 rounded-xl px-3 text-sm font-black transition ${
                   active
                     ? "bg-yellow-400 text-black"
                     : "text-zinc-300 hover:bg-white/[0.06] hover:text-white"
@@ -117,7 +117,7 @@ export function Topbar() {
             type="button"
             aria-label="Pesquisar jogos"
             onClick={() => setSearchOpen((value) => !value)}
-            className="flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-zinc-300 transition hover:bg-white/[0.06] hover:text-white"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] text-zinc-300 transition hover:border-yellow-400/30 hover:bg-white/[0.08] hover:text-white active:scale-95"
           >
             {searchOpen ? (
               <X className="h-5 w-5" />
@@ -130,7 +130,7 @@ export function Topbar() {
           <Link
             href="/profile"
             aria-label={dictionary.common.profile}
-            className={`hidden h-11 items-center gap-2 rounded-lg border px-3 text-sm font-black transition sm:inline-flex ${
+            className={`hidden h-10 items-center gap-2 rounded-xl border px-3 text-sm font-black transition sm:inline-flex ${
               pathname.startsWith("/profile") ||
               pathname.startsWith("/login")
                 ? "border-yellow-400 bg-yellow-400 text-black"
