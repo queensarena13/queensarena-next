@@ -268,6 +268,47 @@ function sortMatches(matches: ExternalMatch[]) {
   })
 }
 
+function isClearlyWomenMatch(row: MatchRow) {
+  if (row.gender) {
+    return ["women", "female", "feminino", "feminina"].includes(
+      row.gender.toLowerCase()
+    )
+  }
+
+  const text = [
+    row.competition,
+    row.home_team,
+    row.away_team,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase()
+
+  const maleMarkers = [
+    " men",
+    "men's",
+    "male",
+    "masculin",
+    "masculino",
+  ]
+  if (maleMarkers.some((marker) => text.includes(marker))) {
+    return false
+  }
+
+  const womenMarkers = [
+    "women",
+    "woman",
+    "womens",
+    "femin",
+    "female",
+    "girls",
+    "wfc",
+    "nwsl",
+    "liga f",
+  ]
+  return womenMarkers.some((marker) => text.includes(marker))
+}
+
 function isMissingColumnError(error: unknown) {
   const message =
     error instanceof Error
@@ -440,13 +481,9 @@ export async function fetchQueensArenaMatches({
   const error = response.error
 
   if (error) {
-    if (!isMissingColumnError(error)) {
-      throw error
-    }
-
     const fallback = await fetchMatchRows(
       client,
-        "external_id,sport,gender,home_team,away_team,home_score,away_score,venue,status,starts_at,competition,source,region"
+        "external_id,sport,home_team,away_team,home_score,away_score,venue,status,starts_at,competition,source,region"
       ,
       {
         requested,
@@ -460,9 +497,13 @@ export async function fetchQueensArenaMatches({
     data = fallback.data as MatchRow[] | null
   }
 
+  const womenMatches = (data || []).filter(
+    (row) => isClearlyWomenMatch(row as MatchRow)
+  )
+
   return sortMatches(
     filterByView(
-      (data || []).map((row) =>
+      womenMatches.map((row) =>
         toExternalMatch(row as MatchRow)
       ),
       view
