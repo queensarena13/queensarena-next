@@ -14,6 +14,7 @@ import {
 type MatchRow = {
   external_id: string | null
   sport: string
+  gender: string | null
   home_team: string
   away_team: string
   home_score: number | null
@@ -306,6 +307,11 @@ function applyMatchFilters(
     )
   }
 
+  filteredQuery = filteredQuery.eq(
+    "gender",
+    "women"
+  )
+
   if (sport) {
     filteredQuery = filteredQuery.eq(
       "sport",
@@ -421,7 +427,7 @@ export async function fetchQueensArenaMatches({
 
   const response = await fetchMatchRows(
     client,
-    "external_id,sport,home_team,away_team,home_score,away_score,venue,status,starts_at,competition,season,source,region,data_status,source_url,updated_at",
+    "external_id,sport,gender,home_team,away_team,home_score,away_score,venue,status,starts_at,competition,season,source,region,data_status,source_url,updated_at",
     {
       requested,
       range,
@@ -440,7 +446,7 @@ export async function fetchQueensArenaMatches({
 
     const fallback = await fetchMatchRows(
       client,
-        "external_id,sport,home_team,away_team,home_score,away_score,venue,status,starts_at,competition,source,region"
+        "external_id,sport,gender,home_team,away_team,home_score,away_score,venue,status,starts_at,competition,source,region"
       ,
       {
         requested,

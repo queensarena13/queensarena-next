@@ -64,19 +64,6 @@ export const TRACKED_COMPETITIONS = [
       "24 seleções e 76 jogos, de 21 de agosto a 6 de setembro de 2026. O calendário deve ser importado e validado a partir da CEV.",
   },
   {
-    key: "cev-eurovolley-2026-masculino",
-    name: "CEV Enel EuroVolley 2026 Masculino",
-    sport: "Volleyball",
-    region: "Europa",
-    source: "manual",
-    sourceStatus: "manual-watchlist",
-    sourceLabel: "CEV",
-    sourceUrl:
-      "https://eurovolley.cev.eu/en/2026/men/",
-    note:
-      "24 seleções e 76 jogos, de 9 a 26 de setembro de 2026. O calendário deve ser importado e validado a partir da CEV.",
-  },
-  {
     key: "liga-solverde-feminina",
     name: "Liga Solverde.pt Feminina",
     sport: "Volleyball",
