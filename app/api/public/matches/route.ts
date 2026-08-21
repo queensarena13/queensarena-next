@@ -24,7 +24,7 @@ export async function GET(
     const view =
       request.nextUrl.searchParams.get(
         "view"
-      )
+      ) || "upcoming"
     const sport =
       request.nextUrl.searchParams.get(
         "sport"
